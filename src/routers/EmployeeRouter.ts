@@ -2,6 +2,8 @@ import { Router } from 'express';
 import EmployeeController from '../controllers/EmployeeController';
 import EmployeeService from '../services/EmployeeService';
 import ServerError from '../error/ServerError';
+import Validate from '../middlewares/Validate';
+import EmployeeDto from '../dto/EmployeeDto';
 
 class EmployeeRouter {
     _router = Router();
@@ -18,7 +20,11 @@ class EmployeeRouter {
     };
 
     private postHttpMethod = (): void => {
-        this._router.post('/', ServerError.apiErrorWrapper(this.employeeController.createEmployee));
+        this._router.post(
+            '/',
+            Validate.validateByObject<EmployeeDto>(EmployeeDto),
+            ServerError.apiErrorWrapper(this.employeeController.createEmployee),
+        );
     };
 
     get router(): Router {

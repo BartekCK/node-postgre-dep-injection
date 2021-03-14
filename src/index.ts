@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
-dotenv.config();
 import Server from './conf/ServerApp';
+
+dotenv.config();
 
 process.on('SIGINT', () => {
     console.log('Caught interrupt signal');

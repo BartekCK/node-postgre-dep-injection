@@ -1,4 +1,4 @@
-import { Pool, PoolClient } from 'pg';
+import { Pool } from 'pg';
 
 class DatabaseApp {
     _pool: Pool;
@@ -17,7 +17,7 @@ class DatabaseApp {
             port: Number(PGPORT),
             max: 20,
             min: 0,
-            connectionTimeoutMillis: 3000
+            connectionTimeoutMillis: 3000,
         });
 
         this._pool.on('error', (err: Error) => {

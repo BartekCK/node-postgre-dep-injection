@@ -1,4 +1,6 @@
-class Employee {
+import { IModel } from '../interfaces';
+
+class Employee implements IModel {
     private _email: string;
     private _firstName: string;
     private _middleNames: string;

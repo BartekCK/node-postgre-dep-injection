@@ -1,4 +1,4 @@
-import express, { Express, Router } from 'express';
+import express, { Express } from 'express';
 import { Server } from 'http';
 import ServerError from '../error/ServerError';
 import EmployeeRouter from '../routers/EmployeeRouter';
