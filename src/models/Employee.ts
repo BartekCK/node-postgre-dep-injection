@@ -1,3 +1,4 @@
+// interfaces
 import { IModel } from '../interfaces';
 
 class Employee implements IModel {

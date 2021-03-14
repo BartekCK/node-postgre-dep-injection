@@ -1,3 +1,4 @@
+// models
 import Employee from '../models/Employee';
 
 export interface EmployeeRepository {

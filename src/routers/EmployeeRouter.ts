@@ -1,8 +1,18 @@
 import { Router } from 'express';
-import EmployeeController from '../controllers/EmployeeController';
-import EmployeeService from '../services/EmployeeService';
-import ServerError from '../error/ServerError';
+
+// middlewares
 import Validate from '../middlewares/Validate';
+
+// controllers
+import EmployeeController from '../controllers/EmployeeController';
+
+// services
+import EmployeeService from '../services/EmployeeService';
+
+// errors
+import ServerError from '../error/ServerError';
+
+// models
 import EmployeeDto from '../dto/EmployeeDto';
 
 class EmployeeRouter {

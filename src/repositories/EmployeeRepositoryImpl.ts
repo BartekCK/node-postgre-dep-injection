@@ -1,8 +1,16 @@
-import { EmployeeRepository } from './EmployeeRepository';
-import Employee from '../models/Employee';
-import DatabaseApp from '../conf/DatabaseApp';
 import { Pool, QueryResult } from 'pg';
+
+// configuration
+import DatabaseApp from '../conf/DatabaseApp';
+
+// repositories
+import { EmployeeRepository } from './EmployeeRepository';
+
+// errors
 import ApiError from '../error/ApiError';
+
+// models
+import Employee from '../models/Employee';
 
 class EmployeeRepositoryImpl implements EmployeeRepository {
     private readonly database: Pool;

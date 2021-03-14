@@ -1,5 +1,8 @@
+// repositories
 import { EmployeeRepository } from '../repositories/EmployeeRepository';
 import EmployeeRepositoryImpl from '../repositories/EmployeeRepositoryImpl';
+
+// models
 import Employee from '../models/Employee';
 
 class EmployeeService {

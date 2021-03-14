@@ -1,6 +1,10 @@
 import { Request, Response } from 'express';
 import { ObjectSchema } from 'joi';
+
+// errors
 import ApiError from '../error/ApiError';
+
+// interfaces
 import { IValidationDTO } from '../interfaces';
 
 abstract class Validate {

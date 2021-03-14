@@ -1,8 +1,12 @@
 import express, { Express } from 'express';
 import { Server } from 'http';
-import ServerError from '../error/ServerError';
-import EmployeeRouter from '../routers/EmployeeRouter';
 import morgan from 'morgan';
+
+// errors
+import ServerError from '../error/ServerError';
+
+// routes
+import EmployeeRouter from '../routers/EmployeeRouter';
 
 class ServerApp {
     private readonly PORT: number;

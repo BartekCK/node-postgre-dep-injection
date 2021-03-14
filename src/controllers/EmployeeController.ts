@@ -1,7 +1,11 @@
-import EmployeeService from '../services/EmployeeService';
 import { Request, Response } from 'express';
-import EmployeeDto from '../dto/EmployeeDto';
+
+// services
+import EmployeeService from '../services/EmployeeService';
+
+// models
 import Employee from '../models/Employee';
+import EmployeeDto from '../dto/EmployeeDto';
 
 class EmployeeController {
     private readonly employeeService;

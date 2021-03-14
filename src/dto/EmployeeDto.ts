@@ -1,5 +1,9 @@
 import Joi, { ObjectSchema } from 'joi';
+
+// models
 import Employee from '../models/Employee';
+
+// interfaces
 import { IValidationDTO } from '../interfaces';
 
 class EmployeeDto extends Employee implements IValidationDTO<EmployeeDto> {
