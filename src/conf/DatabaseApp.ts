@@ -11,7 +11,7 @@ class DatabaseApp {
         }
         this._pool = new Pool({
             user: POSTGRES_USER,
-            host: PGHOST,
+            // host: PGHOST,
             database: POSTGRES_DB,
             password: POSTGRES_PASSWORD,
             port: Number(PGPORT),

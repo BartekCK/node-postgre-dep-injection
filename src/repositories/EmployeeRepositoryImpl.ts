@@ -10,7 +10,7 @@ class EmployeeRepositoryImpl implements EmployeeRepository {
     constructor() {
         const databaseApp = new DatabaseApp();
         this.database = databaseApp.pool;
-        // this.createTable();
+        this.createTable();
     }
 
     createEmployee = async (employee: Employee): Promise<Employee> => {

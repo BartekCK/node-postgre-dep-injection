@@ -3,7 +3,11 @@ import ApiError from './ApiError';
 
 abstract class ServerError {
     public static apiErrorHandler(err: ApiError, req: Request, res: Response, next: (err?: any) => void) {
-        return res.status(err.getCode()).send(err.message);
+        try {
+            res.status(err.getCode()).send(err.message);
+        } catch (e) {
+            res.status(500).send(e.message);
+        }
     }
 
     public static apiErrorWrapper = (callback: (req: Request<any>, res: Response<any>, next: any) => Promise<void>) => {
