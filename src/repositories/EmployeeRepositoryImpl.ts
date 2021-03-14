@@ -10,38 +10,35 @@ class EmployeeRepositoryImpl implements EmployeeRepository {
     constructor() {
         const databaseApp = new DatabaseApp();
         this.database = databaseApp.pool;
-        this.createTable();
     }
 
     createEmployee = async (employee: Employee): Promise<Employee> => {
         const { firstName, lastName, email, middleNames } = employee;
-        const dbQuery: QueryResult<Employee> = await this.database.query(
-            'INSERT INTO employees (email, firstName, middleNames, lastName) VALUES ($1, $2, $3, $4) RETURNING *',
-            [email, firstName, middleNames, lastName],
-        );
-        return dbQuery.rows[0];
+        try {
+            const dbQuery: QueryResult<Employee> = await this.database.query(
+                'INSERT INTO employees (email, firstName, middleNames, lastName) VALUES ($1, $2, $3, $4) RETURNING *',
+                [email, firstName, middleNames, lastName],
+            );
+            return dbQuery.rows[0];
+        } catch (e) {
+            throw ApiError.internal('Database connection error');
+        }
     };
 
     getEmployee = async (id: number): Promise<Employee> => {
-        const result: QueryResult<Employee> = await this.database.query('SELECT * FROM employees WHERE id = $1', [id]);
-        if (!result.rows[0]) {
-            throw ApiError.notFound(`Employee by id ${id} not found`);
-        }
-        return result.rows[0];
-    };
-
-    private createTable = async () => {
         try {
-            if (process.env.NODE_ENV === 'development') {
-                await this.database.query('drop table if exists employees');
+            const result: QueryResult<Employee> = await this.database.query('SELECT * FROM employees WHERE id = $1', [
+                id,
+            ]);
+            if (!result.rows[0]) {
+                throw ApiError.notFound(`Employee by id ${id} not found`);
             }
-            await this.database.query(
-                'CREATE TABLE employees ' +
-                    '(ID SERIAL PRIMARY KEY, email VARCHAR(30), firstName VARCHAR(30), middleNames VARCHAR(30), lastName VARCHAR(30))',
-            );
-            console.log('Table employees created');
+            return result.rows[0];
         } catch (e) {
-            console.log(e.message);
+            if (e instanceof ApiError) {
+                throw e;
+            }
+            throw ApiError.internal('Database connection error');
         }
     };
 }

@@ -1,0 +1,1 @@
+CREATE TABLE employees (ID SERIAL PRIMARY KEY, email VARCHAR(30), firstName VARCHAR(30), middleNames VARCHAR(30), lastName VARCHAR(30));

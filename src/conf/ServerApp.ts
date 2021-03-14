@@ -2,6 +2,7 @@ import express, { Express, Router } from 'express';
 import { Server } from 'http';
 import ServerError from '../error/ServerError';
 import EmployeeRouter from '../routers/EmployeeRouter';
+import morgan from 'morgan';
 
 class ServerApp {
     private readonly PORT: number;
@@ -17,6 +18,7 @@ class ServerApp {
 
     public setup = () => {
         this.app.use(express.json());
+        this.app.use(morgan('combined'));
         this.app.use('/', this.employeeRouter.router);
         this.app.use(ServerError.apiErrorHandler);
     };
