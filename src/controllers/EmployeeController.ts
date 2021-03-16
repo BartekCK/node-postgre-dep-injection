@@ -8,9 +8,9 @@ import Employee from '../models/Employee';
 import EmployeeDto from '../dto/EmployeeDto';
 
 class EmployeeController {
-    private readonly employeeService;
+    private readonly employeeService: EmployeeService;
 
-    constructor(employeeService: EmployeeService) {
+    constructor({ employeeService }: any) {
         this.employeeService = employeeService;
     }
 

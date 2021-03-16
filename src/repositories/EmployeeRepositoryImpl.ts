@@ -15,8 +15,7 @@ import Employee from '../models/Employee';
 class EmployeeRepositoryImpl implements EmployeeRepository {
     private readonly database: Pool;
 
-    constructor() {
-        const databaseApp = new DatabaseApp();
+    constructor({ databaseApp }: any) {
         this.database = databaseApp.pool;
     }
 

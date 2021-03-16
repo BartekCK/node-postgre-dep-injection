@@ -1,6 +1,9 @@
 import dotenv from 'dotenv';
-import Server from './conf/ServerApp';
+import { AwilixContainer } from 'awilix';
 
+// configuration
+import Server from './conf/ServerApp';
+import setupDependencyInjection from './conf/DepsInjection';
 dotenv.config();
 
 process.on('SIGINT', () => {
@@ -8,5 +11,6 @@ process.on('SIGINT', () => {
     process.exit();
 });
 
-const server = new Server(8080);
+const container: AwilixContainer = setupDependencyInjection();
+const server = new Server(8080, container.resolve('employeeRouter'));
 server.start();

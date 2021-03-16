@@ -13,10 +13,11 @@ class ServerApp {
 
     private server!: Server;
     private readonly app: Express = express();
-    private employeeRouter: EmployeeRouter = new EmployeeRouter();
+    private employeeRouter: EmployeeRouter;
 
-    constructor(PORT: number) {
+    constructor(PORT: number, employeeRouter: EmployeeRouter) {
         this.PORT = PORT;
+        this.employeeRouter = employeeRouter;
         this.setup();
     }
 

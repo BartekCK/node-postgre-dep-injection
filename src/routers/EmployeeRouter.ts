@@ -18,7 +18,11 @@ import EmployeeDto from '../dto/EmployeeDto';
 class EmployeeRouter {
     _router = Router();
 
-    private readonly employeeController = new EmployeeController(new EmployeeService());
+    private readonly employeeController: EmployeeController;
+
+    constructor({ employeeController }: any) {
+        this.employeeController = employeeController;
+    }
 
     private setup = (): void => {
         this.getHttpMethod();
