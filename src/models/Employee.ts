@@ -2,16 +2,22 @@
 import { IModel } from '../interfaces';
 
 class Employee implements IModel {
+    private readonly _id?: number;
     private _email: string;
     private _firstName: string;
     private _middleNames: string;
     private _lastName: string;
 
-    constructor(email: string, firstName: string, middleNames: string, lastName: string) {
+    constructor(email: string, firstName: string, middleNames: string, lastName: string, id?: number) {
         this._email = email;
         this._firstName = firstName;
         this._middleNames = middleNames;
         this._lastName = lastName;
+        this._id = id;
+    }
+
+    getId = (): number | undefined => {
+        return this._id;
     }
 
     get email() {

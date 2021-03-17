@@ -4,4 +4,6 @@ export interface IValidationDTO<T> {
     getSchema: () => ObjectSchema<T>;
 }
 
-export interface IModel {}
+export interface IModel {
+    getId: () => number | undefined;
+}
