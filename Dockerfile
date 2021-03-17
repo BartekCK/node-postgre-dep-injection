@@ -1,9 +1,11 @@
 FROM node:14.16.0-alpine AS build
 WORKDIR /usr/app
 COPY ./src ./src
+COPY ./tests ./tests
 COPY package.json .
 COPY tsconfig.json .
 RUN npm install
+RUN npm test
 RUN npm run build
 
 FROM node:14.16.0-alpine
